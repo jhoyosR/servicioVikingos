@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actuaciones Principales - Vikingos API</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Alineación de los contenedores en la parte superior */
+            flex-wrap: wrap; /* Permitir que los contenedores se ajusten */
+            height: auto;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            text-align: center;
+            max-width: 600px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 10px; /* Espacio entre los contenedores de las temporadas */
+            flex: 1 1 200px; /* Permite que el contenedor crezca o se reduzca */
+        }
+        .item {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .item:last-child {
+            border-bottom: none;
+        }
+        .label {
+            font-weight: bold;
+        }
+        h2 {
+            margin-bottom: 15px; /* Espacio debajo del título de la temporada */
+        }
+        .button-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap; /* Permite que los botones se ajusten a la siguiente línea si es necesario */
+            gap: 15px;
+            justify-content: center; /* Centra los botones en la fila */
+            margin: 0 auto; /* Centra el contenedor de botones */
+            padding: 10px 0; /* Espaciado superior e inferior */
+            width: auto; /* Permite que el contenedor se ajuste al contenido */
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #ffd700; /* Color amarillo */
+            background-color: #000; /* Fondo negro */
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            display: block;
+        }
+        .button:hover {
+            background-color: #333; /* Color de fondo al pasar el mouse */
+        }
+        header, footer {
+            padding: 10px;
+            text-align: center;
+        }
+        footer {
+            margin-top: auto; /* Empuja el pie de página hacia la parte inferior */
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Encabezado -->
+    <header>
+        <h1>Vikingos</h1>
+        <p>Temporadas registradas: 2</p>
+        <p>Capítulos registrados: 19</p>
+    </header>
+    <!-- Recibe los actores principales que fueron consumidos en el Controller y los muestra organizados -->
+    <h2>Actores Protagonistas de Vikingos</h2>
+    <div th:each="actuacionPrincipal : ${actuacionesPrincipales}">
+        <div class="item">
+            <p><span class="label">Actor protagonista:</span> <span th:text="${actuacionPrincipal.actor.nombre}">Actor protagonista</span></p>
+            <p><span class="label">Temporada:</span> <span th:text="${actuacionPrincipal.temporada.numeroTemporada}">Temporada</span></p>
+        </div>
+    </div>
+    <!-- Botón para volver al inicio -->
+    <div class="button-container">
+        <a href="/" class="button">Volver</a>
+    </div>
+    <!-- Pie de página -->
+    <footer>
+        <p>Creado por Juan Esteban Hoyos</p>
+        <p>Fecha de creación: 02/11/24</p>
+        <p>Este es un ejercicio para mostrar el uso de Spring Boot en el desarrollo de aplicaciones web a través de un API de la serie Vikingos.</p>
+    </footer>
+</div>
+</body>
+</html>

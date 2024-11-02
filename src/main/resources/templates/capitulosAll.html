@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Todos los capítulos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .item {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .item img {
+            max-width: 400px;
+            max-height: 300px;
+            width: auto;
+            height: auto;
+            border-radius: 8px;
+        }
+        .item:last-child {
+            border-bottom: none;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .label {
+            font-weight: bold;
+        }
+        .stars {
+            display: inline-block;
+            cursor: pointer;
+        }
+        .star {
+            font-size: 24px;
+            color: gray; /* Color inicial de las estrellas */
+        }
+        .star.hover,
+        .star.selected {
+            color: gold; /* Color de las estrellas cuando son seleccionadas o en hover */
+        }
+        .button-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin: 0 auto;
+            padding: 10px 0;
+            width: auto;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #ffd700;
+            background-color: #000;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            display: block;
+        }
+        .button:hover {
+            background-color: #333;
+        }
+        header, footer {
+            padding: 10px;
+            text-align: center;
+        }
+        footer {
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Encabezado -->
+    <header>
+        <h1>Vikingos</h1>
+        <p>Temporadas registradas: 2</p>
+        <p>Capítulos registrados: 19</p>
+    </header>
+    <!-- Recibe los capítulos que fueron consumidos en el Controller y los muestra organizados -->
+    <h2>Capítulos de Vikingos</h2>
+    <div th:each="capitulo : ${capitulos}">
+        <div class="item">
+            <p><span class="label">Código:</span> <span th:text="${capitulo.codigo}">Código</span></p>
+            <p><span class="label">Nombre:</span> <span th:text="${capitulo.nombre}">Nombre</span></p>
+            <p><span class="label">Descripción:</span> <span th:text="${capitulo.descripcion}">Descripcion</span></p>
+            <p><span class="label">Calificación:</span>
+                <span th:text="${capitulo.calificacion}">Calificación</span>
+                <span class="label">- Deja tu opinión:</span>
+                <!-- Muestra el diseño de calificacion por estrellas -->
+                <span class="stars" onclick="setRating(event, this)">
+                    <span class="star" onmouseover="highlightStars(event, this)">★</span>
+                    <span class="star" onmouseover="highlightStars(event, this)">★</span>
+                    <span class="star" onmouseover="highlightStars(event, this)">★</span>
+                    <span class="star" onmouseover="highlightStars(event, this)">★</span>
+                    <span class="star" onmouseover="highlightStars(event, this)">★</span>
+                </span>
+            </p>
+            <p><span class="label">Temporada:</span> <span th:text="${capitulo.temporada.numeroTemporada}">Temporada</span></p>
+            <img th:src="${capitulo.frstImage}" alt="Imagen 1 del capítulo" />
+            <img th:src="${capitulo.scondImage}" alt="Imagen 2 del capítulo" />
+        </div>
+    </div>
+    <!-- Botón para volver a la sección de capítulos -->
+    <div class="button-container">
+        <a href="/html/capitulos.html" class="button">Volver</a>
+    </div>
+    <!-- Pie de página -->
+    <footer>
+        <p>Creado por Juan Esteban Hoyos</p>
+        <p>Fecha de creación: 02/11/24</p>
+        <p>Este es un ejercicio para mostrar el uso de Spring Boot en el desarrollo de aplicaciones web a través de un API de la serie Vikingos.</p>
+    </footer>
+</div>
+
+<!-- Funcionalidad del diseño para calificar por estrellas -->
+<script>
+    function highlightStars(event, star) {
+        const stars = star.parentElement.querySelectorAll('.star');
+        const index = Array.from(stars).indexOf(star);
+        stars.forEach((s, i) => {
+            s.classList.toggle('hover', i <= index);
+        });
+    }
+
+    function setRating(event, starsContainer) {
+        const stars = starsContainer.querySelectorAll('.star');
+        stars.forEach(star => star.classList.remove('hover'));
+        const selectedStarIndex = Array.from(stars).indexOf(event.target);
+        stars.forEach((s, i) => {
+            s.classList.toggle('selected', i <= selectedStarIndex);
+        });
+    }
+
+    document.addEventListener('mouseleave', function(event) {
+        const starContainers = document.querySelectorAll('.stars');
+        starContainers.forEach(container => {
+            const stars = container.querySelectorAll('.star');
+            stars.forEach(star => star.classList.remove('hover'));
+        });
+    });
+</script>
+</body>
+</html>

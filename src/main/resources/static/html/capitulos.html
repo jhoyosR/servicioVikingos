@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capítulos - Vikingos API</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Alineación de los contenedores en la parte superior */
+            flex-wrap: wrap; /* Permitir que los contenedores se ajusten */
+            height: auto;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            text-align: center;
+            max-width: 600px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 10px; /* Espacio entre los contenedores de las temporadas */
+            flex: 1 1 200px; /* Permite que el contenedor crezca o se reduzca */
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 0 auto;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #ffd700; /* Color amarillo */
+            background-color: #000; /* Fondo negro */
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            display: block;
+        }
+        .button:hover {
+            background-color: #333; /* Color de fondo al pasar el mouse */
+        }
+        h2 {
+            margin-bottom: 15px; /* Espacio debajo del título de la temporada */
+        }
+        header, footer {
+            padding: 10px;
+            text-align: center;
+        }
+        footer {
+            margin-top: auto; /* Empuja el pie de página hacia la parte inferior */
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Encabezado -->
+    <header>
+        <h1>Vikingos</h1>
+        <p>Temporadas registradas: 2</p>
+        <p>Capítulos registrados: 19</p>
+    </header>
+    <!-- Botones para acceder a los capítulos específicos de la temporada 1 -->
+    <h2>Capítulos Temporada 1</h2>
+    <div class="button-container">
+        <a href="/vikingos/capitulos/1" class="button">Capítulo 1</a>
+        <a href="/vikingos/capitulos/2" class="button">Capítulo 2</a>
+        <a href="/vikingos/capitulos/3" class="button">Capítulo 3</a>
+        <a href="/vikingos/capitulos/4" class="button">Capítulo 4</a>
+        <a href="/vikingos/capitulos/5" class="button">Capítulo 5</a>
+        <a href="/vikingos/capitulos/6" class="button">Capítulo 6</a>
+        <a href="/vikingos/capitulos/7" class="button">Capítulo 7</a>
+        <a href="/vikingos/capitulos/8" class="button">Capítulo 8</a>
+        <a href="/vikingos/capitulos/9" class="button">Capítulo 9</a>
+    </div>
+
+    <!-- Botones para acceder a los capítulos específicos de la temporada 2 -->
+    <h2> Capítulos Temporada 2</h2>
+    <div class="button-container">
+        <a href="/vikingos/capitulos/10" class="button">Capítulo 1</a>
+        <a href="/vikingos/capitulos/11" class="button">Capítulo 2</a>
+        <a href="/vikingos/capitulos/12" class="button">Capítulo 3</a>
+        <a href="/vikingos/capitulos/13" class="button">Capítulo 4</a>
+        <a href="/vikingos/capitulos/14" class="button">Capítulo 5</a>
+        <a href="/vikingos/capitulos/15" class="button">Capítulo 6</a>
+        <a href="/vikingos/capitulos/16" class="button">Capítulo 7</a>
+        <a href="/vikingos/capitulos/17" class="button">Capítulo 8</a>
+        <a href="/vikingos/capitulos/18" class="button">Capítulo 9</a>
+        <a href="/vikingos/capitulos/19" class="button">Capítulo 10</a>
+    </div>
+
+
+    <!-- Botón para acceder a todos los capítulos -->
+    <h2>Todos los capítulos</h2>
+    <div class="button-container">
+        <a href="/vikingos/capitulos" class="button">Ver</a>
+    </div>
+
+    <div class="button-container">
+        <h2></h2>  <!-- Espacio entre botones -->
+    </div>
+
+    <!-- Botón para agregar un nuevo capítulo -->
+    <div class="button-container">
+        <a href="/vikingos/capitulos/nuevo" class="button">Agregar capítulo</a>
+    </div>
+
+    <div class="button-container">
+        <h2></h2>  <!-- Espacio entre botones -->
+    </div>
+
+    <!-- Botón para volver al inicio -->
+    <div class="button-container">
+        <a href="/" class="button">Volver</a>
+    </div>
+    <!-- Pie de página -->
+    <footer>
+        <p>Creado por Juan Esteban Hoyos</p>
+        <p>Fecha de creación: 02/11/24</p>
+        <p>Este es un ejercicio para mostrar el uso de Spring Boot en el desarrollo de aplicaciones web a través de un API de la serie Vikingos.</p>
+    </footer>
+</div>
+
+</body>
+</html>

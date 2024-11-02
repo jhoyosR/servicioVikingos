@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Agregar Temporada</title>
+</head>
+<body>
+<!-- Formulario para agregar una nueva temporada-->
+<h2>Agregar Nueva Temporada</h2>
+<form th:action="@{/vikingos/temporadas/guardar}" th:object="${temporada}" method="post">
+
+    <label for="añoEmision">Año de emisión:</label>
+    <input type="number" id="añoEmision" th:field="*{anioEmision}" min="2010" max="2024" required><br>
+
+    <label for="numeroTemporada">Número de temporada:</label>
+    <input type="number" id="numeroTemporada" th:field="*{numeroTemporada}" min="1" required><br>
+
+    <label for="numeroCapitulos">Número de capítulos:</label>
+    <input type="number" id="numeroCapitulos" th:field="*{numeroCapitulos}" min="1" required><br>
+
+    <!-- Botón para enviar formulario -->
+    <button type="submit">Guardar</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Página Inicial - Vikingos API</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            text-align: center;
+            max-width: 600px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow-y: auto; /* Agrega desplazamiento vertical si es necesario */
+            max-height: 93vh; /* Ajusta la altura máxima según lo desees */
+        }
+        .episode {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .episode:last-child {
+            border-bottom: none;
+        }
+        .episode img {
+            max-width: 600px; /* Ancho máximo */
+            max-height: 500px; /* Altura máxima */
+            width: auto;
+            height: auto;
+            border-radius: 8px;
+        }
+        .button-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap; /* Permite que los botones se ajusten a la siguiente línea si es necesario */
+            gap: 15px;
+            justify-content: center; /* Centra los botones en la fila */
+            margin: 0 auto; /* Centra el contenedor de botones */
+            padding: 10px 0; /* Espaciado superior e inferior */
+            width: auto; /* Permite que el contenedor se ajuste al contenido */
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #ffd700; /* Color amarillo */
+            background-color: #000; /* Fondo negro */
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            display: block;
+        }
+        .button:hover {
+            background-color: #333; /* Color de fondo al pasar el mouse */
+        }
+        header, footer {
+            padding: 10px;
+            text-align: center;
+        }
+        footer {
+            margin-top: auto; /* Empuja el pie de página hacia la parte inferior */
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- Encabezado -->
+    <header>
+        <h1>Vikingos</h1>
+        <p>Temporadas registradas: 2</p>
+        <p>Capítulos registrados: 19</p>
+    </header>
+
+    <!-- Recibe la información que fue consumida en el Controller y la muestra organizada -->
+    <h2>Información de Vikingos</h2>
+    <div th:each="vikingosInfo : ${vikingosInfos}" class="episode">
+        <img th:src="${vikingosInfo.poster}" alt="Imagen de la serie" />
+        <p><span th:text="${vikingosInfo.descripcion}">Descripción</span></p>
+        <p><strong>Creador:</strong> <span th:text="${vikingosInfo.creador}">Creador</span></p>
+        <p><strong>Clasificación:</strong> <span th:text="${vikingosInfo.clasificacion}">Clasificación</span></p>
+        <p><strong>Calificación Promedio:</strong> <span th:text="${vikingosInfo.calificacionPromedio}">Calificación Promedio</span></p>
+        <p><strong>Capítulo mejor calificado:</strong> <span th:text="${vikingosInfo.mejorCapitulo}">Capítulo mejor calificado</span></p>
+        <p><strong>Temporadas:</strong> <span th:text="${vikingosInfo.temporadas}">Temporadas</span></p>
+        <p><strong>Año de emisión:</strong> <span th:text="${vikingosInfo.anioEmision}">Año de emisión</span></p>
+        <!-- Botón para volver al inicio -->
+        <div class="button-container">
+            <a href="/" class="button">Volver</a>
+        </div>
+    </div>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>Creado por Juan Esteban Hoyos</p>
+        <p>Fecha de creación: 02/11/24</p>
+        <p>Este es un ejercicio para mostrar el uso de Spring Boot en el desarrollo de aplicaciones web a través de un API de la serie Vikingos.</p>
+    </footer>
+</div>
+</body>
+</html>

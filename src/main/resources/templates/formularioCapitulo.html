@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Agregar Capítulo</title>
+</head>
+<body>
+<!-- Formulario para agregar un nuevo capítulo-->
+<h2>Agregar Nuevo Capítulo</h2>
+<form th:action="@{/vikingos/capitulos/guardar}" th:object="${capitulo}" method="post">
+
+    <label for="temporada">Temporada:</label>
+    <input type="number" id="temporada" th:field="*{temporada}" min="1" required><br>
+
+    <label for="codigo">Código:</label>
+    <input type="text" id="codigo" th:field="*{codigo}" required><br>
+
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" th:field="*{nombre}" required><br>
+
+    <label for="descripcion">Descripción:</label>
+    <textarea id="descripcion" th:field="*{descripcion}" required></textarea><br>
+
+    <label for="frstImage">Link de 1era imagen:</label>
+    <input type="text" id="frstImage" th:field="*{frstImage}" required><br>
+
+    <label for="scondImage">Link de 2da imagen:</label>
+    <input type="text" id="scondImage" th:field="*{scondImage}" required><br>
+
+    <label for="calificacion">Calificación:</label>
+    <select id="calificacion" th:field="*{calificacion}" required>
+        <option value="Bueno">Bueno</option>
+        <option value="Malo">Malo</option>
+        <option value="Regular">Regular</option>
+    </select><br>
+
+    <!-- Botón para enviar formulario -->
+    <button type="submit">Guardar</button>
+</form>
+</body>
+</html>

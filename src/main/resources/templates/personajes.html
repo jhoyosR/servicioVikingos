@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Personajes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .item {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .item img {
+            max-width: 400px; /* Ancho máximo */
+            max-height: 300px; /* Altura máxima */
+            width: auto;
+            height: auto;
+            border-radius: 8px;
+        }
+        .item:last-child {
+            border-bottom: none;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .label {
+            font-weight: bold;
+        }
+        .button-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap; /* Permite que los botones se ajusten a la siguiente línea si es necesario */
+            gap: 15px;
+            justify-content: center; /* Centra los botones en la fila */
+            margin: 0 auto; /* Centra el contenedor de botones */
+            padding: 10px 0; /* Espaciado superior e inferior */
+            width: auto; /* Permite que el contenedor se ajuste al contenido */
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #ffd700; /* Color amarillo */
+            background-color: #000; /* Fondo negro */
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            display: block;
+        }
+        .button:hover {
+            background-color: #333; /* Color de fondo al pasar el mouse */
+        }
+        header, footer {
+            padding: 10px;
+            text-align: center;
+        }
+        footer {
+            margin-top: auto; /* Empuja el pie de página hacia la parte inferior */
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Encabezado -->
+    <header>
+        <h1>Vikingos</h1>
+        <p>Temporadas registradas: 2</p>
+        <p>Capítulos registrados: 19</p>
+    </header>
+    <!-- Recibe los personajes que fueron consumidos en el Controller y los muestra organizados -->
+    <h2>Personajes de Vikingos</h2>
+    <div th:each="personaje : ${personajes}">
+        <div class="item">
+            <p><span class="label">Nombre:</span> <span th:text="${personaje.nombre}">Nombre</span></p>
+            <p><span class="label">Descripción:</span> <span th:text="${personaje.descripcion}">Descripcion</span></p>
+            <p><span class="label">Estatus:</span> <span th:text="${personaje.estatus}">Estatus</span></p>
+            <img th:src="${personaje.foto}" alt="Imagen del personaje" />
+        </div>
+    </div>
+    <!-- Botón para volver al inicio -->
+    <div class="button-container">
+        <a href="/" class="button">Volver</a>
+    </div>
+    <!-- Pie de página -->
+    <footer>
+        <p>Creado por Juan Esteban Hoyos</p>
+        <p>Fecha de creación: 02/11/24</p>
+        <p>Este es un ejercicio para mostrar el uso de Spring Boot en el desarrollo de aplicaciones web a través de un API de la serie Vikingos.</p>
+    </footer>
+</div>
+</body>
+</html>
